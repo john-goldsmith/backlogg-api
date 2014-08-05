@@ -3,8 +3,15 @@ require 'bundler'
 require 'json'
 require 'active_record'
 require 'sinatra'
+require "sinatra/activerecord"
+# require "./config/environments"
 
-Sinatra::Base.set(:environment, ENV["RACK_ENV"] || "development")
+APP_ROOT = settings.root
+RACK_ENV = ENV['RACK_ENV'] || 'development'
+CONFIG = YAML.load_file(File.join(APP_ROOT, 'config', 'config.yml'))
+DB_CONFIG = YAML.load_file(File.join(APP_ROOT, 'config', 'database.yml'))
+
+# Sinatra::Base.set(:environment, RACK_ENV)
 
 Dir[File.dirname(__FILE__) + '/lib/controllers/*.rb'].each { |controller| require controller }
 Dir[File.dirname(__FILE__) + '/lib/models/*.rb'].each { |model| require model }
