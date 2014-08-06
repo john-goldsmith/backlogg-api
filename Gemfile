@@ -8,10 +8,12 @@ gem 'activerecord'
 gem 'activesupport'
 gem 'activemodel'
 gem 'activeresource'
+gem 'active_model_serializers'
 gem 'sinatra'
 gem "sinatra-activerecord"
 
 group :development do
+  gem 'pry'
 end
 
 group :test do

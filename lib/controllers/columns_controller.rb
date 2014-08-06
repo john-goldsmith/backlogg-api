@@ -6,24 +6,34 @@ module Backlogg
 
       class ColumnsController < ApplicationController
 
+        # Get all columns
         get '/' do
-          # Get all columns
+          Column.all.to_json
         end
 
+        # Get a specific column
         get '/:id' do
-          # Get specific column
+          Column.find_by_id(params[:id])
         end
 
+        # Get all tasks for a specific column
+        get '/:id/tasks' do
+          Column.find_by_id(params[:id]).tasks.to_json
+        end
+
+        # Create a new column
         post '/' do
-          # Create new column
+
         end
 
+        # Update a specific column
         put '/:id' do
-          # Update specific column
+
         end
 
+        # Delete a specific column
         delete '/:id' do
-          # Delete specific column
+
         end
 
       end

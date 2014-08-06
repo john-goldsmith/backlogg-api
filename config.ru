@@ -5,5 +5,6 @@ run Rack::URLMap.new({
   "/api/v1/comments" => Backlogg::Api::V1::CommentsController,
   "/api/v1/projects" => Backlogg::Api::V1::ProjectsController,
   "/api/v1/tasks" => Backlogg::Api::V1::TasksController,
-  "/api/v1/users" => Backlogg::Api::V1::UsersController
+  "/api/v1/users" => Backlogg::Api::V1::UsersController,
+  "/api/v1/templates" => Backlogg::Api::V1::TemplatesController
 })

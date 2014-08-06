@@ -1,4 +1,5 @@
 class InitialMigration < ActiveRecord::Migration
+
   def change
 
     create_table :columns do |t|
@@ -32,6 +33,7 @@ class InitialMigration < ActiveRecord::Migration
     create_table :projects do |t|
       t.string :name
       t.string :slug
+      t.references :user
       t.timestamps
     end
 
@@ -43,11 +45,13 @@ class InitialMigration < ActiveRecord::Migration
     end
 
     create_table :users do |t|
+      t.string :screen_name
       t.string :first_name
       t.string :last_name
-      t.string :password
+      t.string :email
       t.timestamps
     end
 
   end
+
 end

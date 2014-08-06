@@ -6,24 +6,29 @@ module Backlogg
 
       class CommentsController < ApplicationController
 
+        # Get all comments
         get '/' do
-          # Get all comments
+          Comment.all.to_json
         end
 
+        # Get a specific comment
         get '/:id' do
-          # Get specific comment
+          Comment.find_by_id(params[:id])
         end
 
+        # Create a new comment
         post '/' do
-          # Create new comment
+
         end
 
+        # Update a specific comment
         put '/:id' do
-          # Update specific comment
+
         end
 
+        # Delete a specific comment
         delete '/:id' do
-          # Delete specific comment
+
         end
 
       end

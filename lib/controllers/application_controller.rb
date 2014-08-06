@@ -6,7 +6,7 @@ module Backlogg
 
       class ApplicationController < Sinatra::Base
 
-        register Sinatra::ActiveRecordExtension
+        # register Sinatra::ActiveRecordExtension
 
         before do
           content_type :json

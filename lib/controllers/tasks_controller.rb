@@ -6,24 +6,34 @@ module Backlogg
 
       class TasksController < ApplicationController
 
+        # Get all tasks
         get '/' do
-          # Get all tasks
+          Task.all.to_json
         end
 
+        # Get a specific task
         get '/:id' do
-          # Get specific task
+          Task.find_by_id(params[:id]).to_json
         end
 
+        # Get all comments for a specific task
+        get '/:id/comments' do
+          Task.find_by_id(params[:id]).comments.to_json
+        end
+
+        # Create a new task
         post '/' do
-          # Create new task
+
         end
 
+        # Update a specific task
         put '/:id' do
-          # Update specific task
+
         end
 
+        # Delete a specific task
         delete '/:id' do
-          # Delete specific task
+
         end
 
       end
