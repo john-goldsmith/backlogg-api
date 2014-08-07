@@ -55,7 +55,8 @@ templates.each do |template|
   template[:columns].each do |template_column|
     TemplateColumn.where(
       template_id: template_instance.id,
-      name: template_column[:name]
+      name: template_column[:name],
+      slug: template_column[:name].parameterize
     ).first_or_create
   end
 end

@@ -8,37 +8,31 @@ module Backlogg
 
         # Get all projects
         get '/' do
-          projects = Project.all
-          puts "@"*88
-          puts projects.inspect
-
-          # projects.each { |project| Backlogg::Serializers::ProjectSerializer.new(project) }
-          puts Backlogg::Serializers::ProjectSerializer.new(projects).inspect
-          puts "@"*88
+          Project.all.map { |project| Backlogg::Serializers::ProjectSerializer.new(project) }.to_json
         end
 
         # Get a specific project
         get '/:id' do
-          Project.find_by_id(params[:id]).to_json
-          # project = Project.find_by_id(params[:id]).to_json
-          # render Backlogg::Serializers::ProjectSerializer.new(project)
+          project = Project.find_by_id(params[:id])
+          Backlogg::Serializers::ProjectSerializer.new(project).to_json
         end
 
         # Get all tasks for a specific project
         get '/:id/columns' do
-          Project.find_by_id(params[:id]).columns.to_json
+          project = Project.find_by_id(params[:id])
+          project.columns.map { |column| Backlogg::Serializers::ColumnSerializer.new(column) }.to_json
         end
 
         # Get all tasks for a specific project
         get '/:id/tasks' do
-          project_tasks = Project.find_by_id(params[:id]).tasks
-          project_tasks.each { |project_task| Backlogg::Serializers::ProjectSerializer.new(project_task) }
-          # Backlogg::Serializers::ProjectSerializer.new(project_tasks)
+          project = Project.find_by_id(params[:id])
+          project.tasks.map { |task| Backlogg::Serializers::TaskSerializer.new(task) }.to_json
         end
 
         # Get all comments for a specific project
         get '/:id/comments' do
-          Project.find_by_id(params[:id]).comments.to_json
+          project = Project.find_by_id(params[:id])
+          project.comments.map { |comment| Backlogg::Serializers::CommentSerializer.new(comment) }.to_json
         end
 
         # get '/:id/columns/:id'

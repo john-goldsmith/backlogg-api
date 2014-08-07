@@ -8,17 +8,19 @@ module Backlogg
 
         # Get all tasks
         get '/' do
-          Task.all.to_json
+          Task.all.map { |task| Backlogg::Serializers::TaskSerializer.new(task) }.to_json
         end
 
         # Get a specific task
         get '/:id' do
-          Task.find_by_id(params[:id]).to_json
+          task = Task.find_by_id(params[:id])
+          Backlogg::Serializers::TaskSerializer.new(task).to_json
         end
 
         # Get all comments for a specific task
         get '/:id/comments' do
-          Task.find_by_id(params[:id]).comments.to_json
+          task = Task.find_by_id(params[:id])
+          task.comments.map { |comment| Backlogg::Serializers::CommentSerializer.new(comment) }.to_json
         end
 
         # Create a new task

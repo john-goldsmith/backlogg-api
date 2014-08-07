@@ -8,12 +8,13 @@ module Backlogg
 
         # Get all comments
         get '/' do
-          Comment.all.to_json
+          Comment.all.map { |comment| Backlogg::Serializers::CommentSerializer.new(comment) }.to_json
         end
 
         # Get a specific comment
         get '/:id' do
-          Comment.find_by_id(params[:id])
+          comment = Comment.find_by_id(params[:id])
+          Backlogg::Serializers::CommentSerializer.new(comment).to_json
         end
 
         # Create a new comment
