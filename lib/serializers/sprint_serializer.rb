@@ -2,14 +2,13 @@ module Backlogg
 
   module Serializers
 
-    class ColumnSerializer < ApplicationSerializer
+    class SprintSerializer < ApplicationSerializer
 
       attributes :id,
                  :name,
                  :slug
 
       has_one :project#, serializer: "Backlogg::Serializers::ProjectSerializer"
-      has_many :tasks#, serializer: "Backlogg::Serializers::TaskSerializer"
 
     end
 

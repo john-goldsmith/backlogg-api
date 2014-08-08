@@ -8,7 +8,7 @@ module Backlogg
                  :name,
                  :slug
 
-      has_one :template, serializer: "Backlogg::Serializers::TemplateSerializer"
+      has_one :template#, serializer: "Backlogg::Serializers::TemplateSerializer"
 
     end
 

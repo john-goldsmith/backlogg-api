@@ -52,6 +52,9 @@ class InitialMigration < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table :sprints do |t|
+    end
+
   end
 
 end

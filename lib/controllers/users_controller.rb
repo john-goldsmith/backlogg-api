@@ -8,25 +8,25 @@ module Backlogg
 
         # Get all users
         get '/' do
-          User.all.map { |user| Backlogg::Serializers::UserSerializer.new(user) }.to_json
+          json User.all.map { |user| Backlogg::Serializers::UserSerializer.new(user) }
         end
 
         # Get a specific user
         get '/:id' do
           user = User.find_by_id(params[:id])
-          Backlogg::Serializers::UserSerializer.new(user).to_json
+          json Backlogg::Serializers::UserSerializer.new(user)
         end
 
         # Get all comments for a specific user
         get '/:id/comments' do
           user = User.find_by_id(params[:id])
-          user.comments.map { |comment| Backlogg::Serializers::CommentSerializer.new(comment) }.to_json
+          json user.comments.map { |comment| Backlogg::Serializers::CommentSerializer.new(comment) }
         end
 
         # Get all projects authored by a specific user
         get '/:id/projects' do
           user = User.find_by_id(params[:id])
-          user.projects.map { |project| Backlogg::Serializers::ProjectSerializer.new(project) }.to_json
+          json user.projects.map { |project| Backlogg::Serializers::ProjectSerializer.new(project) }
         end
 
         # Create a new user

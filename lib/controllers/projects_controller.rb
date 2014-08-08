@@ -6,44 +6,54 @@ module Backlogg
 
       class ProjectsController < ApplicationController
 
+        # get '/:project_id/columns/:id'
+        # get '/:project_id/columns/:column_id/tasks'
+        # get '/:project_id/columns/:column_id/tasks/:task_id'
+        # get '/:project_id/columns/:column_id/tasks/:task_id/comments'
+        # get '/:project_id/columns/:column_id/tasks/:task_id/comments/:comment_id'
+
         # Get all projects
         get '/' do
-          Project.all.map { |project| Backlogg::Serializers::ProjectSerializer.new(project) }.to_json
+          json Project.all.map { |project| Backlogg::Serializers::ProjectSerializer.new(project) }
         end
 
         # Get a specific project
         get '/:id' do
           project = Project.find_by_id(params[:id])
-          Backlogg::Serializers::ProjectSerializer.new(project).to_json
+          json Backlogg::Serializers::ProjectSerializer.new(project)
         end
 
         # Get all tasks for a specific project
         get '/:id/columns' do
           project = Project.find_by_id(params[:id])
-          project.columns.map { |column| Backlogg::Serializers::ColumnSerializer.new(column) }.to_json
+          json project.columns.map { |column| Backlogg::Serializers::ColumnSerializer.new(column) }
         end
 
         # Get all tasks for a specific project
         get '/:id/tasks' do
           project = Project.find_by_id(params[:id])
-          project.tasks.map { |task| Backlogg::Serializers::TaskSerializer.new(task) }.to_json
+          json project.tasks.map { |task| Backlogg::Serializers::TaskSerializer.new(task) }
         end
 
         # Get all comments for a specific project
         get '/:id/comments' do
           project = Project.find_by_id(params[:id])
-          project.comments.map { |comment| Backlogg::Serializers::CommentSerializer.new(comment) }.to_json
+          json project.comments.map { |comment| Backlogg::Serializers::CommentSerializer.new(comment) }
         end
-
-        # get '/:id/columns/:id'
-        # get '/:id/columns/:column_id/tasks'
-        # get '/:id/columns/:column_id/tasks/:task_id'
-        # get '/:id/columns/:column_id/tasks/:task_id/comments'
-        # get '/:id/columns/:column_id/tasks/:task_id/comments/:comment_id'
 
         # Create a new project
         post '/' do
-
+          # ... if has_params?([:name])
+          if params[:project]
+            project = Project.create(params[:project])
+            if project
+              json Backlogg::Serializers::ProjectSerializer.new(project)
+            else
+              {error: true, message: "Error saving", validation_messages: errors.messages}.to_json
+            end
+          else
+            {error: true, message: "Invalid parameters"}.to_json
+          end
         end
 
         # Update a specific project

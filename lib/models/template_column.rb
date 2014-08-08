@@ -1,5 +1,18 @@
-class TemplateColumn < ActiveRecord::Base
+module Backlogg
 
-  belongs_to :template
+  module Models
+
+    class TemplateColumn < ActiveRecord::Base
+
+      include Backlogg::Concerns::Slugable
+
+      belongs_to :template
+
+      validates :name, presence: true
+      validates_associated :template
+
+    end
+
+  end
 
 end

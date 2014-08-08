@@ -9,7 +9,7 @@ module Backlogg
                  :slug,
                  :is_active
 
-      has_many :template_columns, serializer: "Backlogg::Serializers::TemplateColumnSerializer"
+      has_many :template_columns#, serializer: "Backlogg::Serializers::TemplateColumnSerializer"
 
     end
 
