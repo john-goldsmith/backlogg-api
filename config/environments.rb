@@ -1,5 +1,9 @@
 # configure :development do
-#   # set :database, 'postgres://localhost/backlogg_development'
+#   register Sinatra::Reloader
+#   also_reload "../lib/concerns/*.rb"
+#   also_reload "../lib/controllers/*.rb"
+#   also_reload "../lib/models/*.rb"
+#   also_reload "../lib/serializers/*.rb"
 #   set :database, 'postgres://postgres@localhost/backlogg_development'
 #   set :show_exceptions, true
 # end

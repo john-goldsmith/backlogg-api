@@ -10,12 +10,13 @@ require "sinatra/config_file"
 require "sinatra/json"
 require "sinatra/respond_with"
 require "sinatra-initializers"
-# require "./config/environments"
+require "./config/environments"
 
 APP_ROOT = settings.root
 RACK_ENV = ENV['RACK_ENV'] || 'development'
 CONFIG = YAML.load_file(File.join(APP_ROOT, 'config', 'config.yml'))
-DB_CONFIG = YAML.load_file(File.join(APP_ROOT, 'config', 'database.yml'))
+# DATABASE_URL=postgres://postgres@localhost/backlogg_development # Previously in .env
+# DB_CONFIG = YAML.load_file(File.join(APP_ROOT, 'config', 'database.yml'))
 
 # set :environment, RACK_ENV
 

@@ -13,6 +13,10 @@ module Backlogg
           content_type :json
         end
 
+        not_found do
+          halt 404, { error: 'URL not found' }.to_json
+        end
+
       end
 
     end

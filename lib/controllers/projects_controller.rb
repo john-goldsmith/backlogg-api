@@ -43,7 +43,7 @@ module Backlogg
 
         # Create a new project
         post '/' do
-          # ... if has_params?([:name])
+          # ... if params.has_key?(:name)
           if params[:project]
             project = Project.create(params[:project])
             if project

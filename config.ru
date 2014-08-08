@@ -1,4 +1,4 @@
-require './application'
+require './boot'
 
 run Rack::URLMap.new({
   "/api/v1/columns"     => Backlogg::Api::V1::ColumnsController,
