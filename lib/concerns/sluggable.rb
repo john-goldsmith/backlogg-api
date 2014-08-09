@@ -2,7 +2,7 @@ module Backlogg
 
   module Concerns
 
-    module Slugable
+    module Sluggable
 
       extend ActiveSupport::Concern
 

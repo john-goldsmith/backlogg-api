@@ -4,7 +4,7 @@ module Backlogg
 
     class Template < ActiveRecord::Base
 
-      include Backlogg::Concerns::Slugable
+      include Backlogg::Concerns::Sluggable
 
       has_many :template_columns
 

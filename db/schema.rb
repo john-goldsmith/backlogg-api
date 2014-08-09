@@ -19,7 +19,8 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "columns", force: true do |t|
     t.string   "name"
     t.string   "slug"
-    t.integer  "project_id"
+    t.integer  "sprint_id"
+    t.boolean  "is_active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "body"
     t.integer  "task_id"
     t.integer  "user_id"
+    t.boolean  "is_active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,7 +37,51 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "projects", force: true do |t|
     t.string   "name"
     t.string   "slug"
+    t.string   "code",       limit: 2
     t.integer  "user_id"
+    t.boolean  "is_active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "related_tasks", force: true do |t|
+    t.integer  "task_id"
+    t.integer  "related_task_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sprints", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.date     "starts_at"
+    t.date     "ends_at"
+    t.integer  "project_id"
+    t.boolean  "is_active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tag_types", force: true do |t|
+    t.string   "name"
+    t.string   "color"
+    t.boolean  "is_active",  default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.integer  "task_id"
+    t.integer  "tag_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "task_types", force: true do |t|
+    t.string   "name"
+    t.string   "icon"
+    t.boolean  "comments_allowed"
+    t.boolean  "is_active",        default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,6 +90,9 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "name"
     t.string   "slug"
     t.integer  "column_id"
+    t.integer  "parent_task"
+    t.boolean  "comments_allowed", default: true
+    t.boolean  "is_active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

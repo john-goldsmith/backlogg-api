@@ -1,14 +1,14 @@
 columns = [
   {
-    name: "Test Column 1"
+    name: "Test Column 1",
+    sprint_id: Sprint.first.id
   }
 ]
 
 columns.each do |column|
-  project = Project.first
   Column.where(
     name: column[:name],
     slug: column[:name].parameterize,
-    project_id: project.id
-  ).first_or_create if project
+    sprint_id: column[:sprint_id]
+  ).first_or_create
 end

@@ -8,7 +8,7 @@ module Backlogg
                  :name,
                  :slug
 
-      has_one :project#, serializer: "Backlogg::Serializers::ProjectSerializer"
+      has_one :sprint#, serializer: "Backlogg::Serializers::SprintSerializer"
       has_many :tasks#, serializer: "Backlogg::Serializers::TaskSerializer"
 
     end

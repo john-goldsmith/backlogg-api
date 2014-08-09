@@ -1,9 +1,12 @@
-require './application'
+require './boot'
 require 'sinatra/activerecord/rake'
 
 task default: [:console]
 
+desc "Loads a Pry console"
 task :console do
-  # require 'pry'
-  # `pry -r "./application.rb"`
+  require 'pry'
+  system("bundle exec pry -r ./boot.rb")
 end
+
+task c: :console

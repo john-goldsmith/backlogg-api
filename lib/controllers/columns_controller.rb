@@ -8,19 +8,19 @@ module Backlogg
 
         # Get all columns
         get '/' do
-          json Column.all.map { |column| Backlogg::Serializers::ColumnSerializer.new(column) }
+          json Column.all.map { |column| ColumnSerializer.new(column) }
         end
 
         # Get a specific column
         get '/:id' do
           column = Column.find_by_id(params[:id])
-          json Backlogg::Serializers::ColumnSerializer.new(column)
+          json ColumnSerializer.new(column)
         end
 
         # Get all tasks for a specific column
         get '/:id/tasks' do
           column = Column.find_by_id(params[:id])
-          json column.tasks.map { |task| Backlogg::Serializers::TaskSerializer.new(task) }
+          json column.tasks.map { |task| TaskSerializer.new(task) }
         end
 
         # Create a new column

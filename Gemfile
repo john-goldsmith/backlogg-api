@@ -13,10 +13,17 @@ gem "sinatra"
 gem "sinatra-contrib"
 gem "sinatra-activerecord"
 gem "sinatra-initializers"
+gem "sinatra-param"
+gem "foreman"
 
 group :development do
   gem "pry"
-  # gem "thin"
+  gem "rerun"
+  gem "thin"
+end
+
+group :documentation do
+  gem "yard"
 end
 
 group :test do

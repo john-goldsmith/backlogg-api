@@ -4,12 +4,10 @@ module Backlogg
 
     class Project < ActiveRecord::Base
 
-      include Backlogg::Concerns::Slugable
+      include Backlogg::Concerns::Sluggable
 
       belongs_to :user
-      has_many :columns
-      has_many :tasks, through: :columns
-      has_many :comments, through: :tasks
+      has_many :sprints
 
       validates :name, presence: true
       validates :slug, uniqueness: true

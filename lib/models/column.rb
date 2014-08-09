@@ -4,13 +4,13 @@ module Backlogg
 
     class Column < ActiveRecord::Base
 
-      include Backlogg::Concerns::Slugable
+      include Backlogg::Concerns::Sluggable
 
       has_many :tasks
-      belongs_to :project
+      belongs_to :sprint
 
       validates :name, presence: true
-      validates_associated :project
+      validates_associated :sprint
 
     end
 

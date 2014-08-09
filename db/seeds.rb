@@ -12,4 +12,6 @@
 # and executed.  If one seed file has a dependency on another seed file,
 # this ensures that they are executed in the correct order.
 
+include Backlogg::Models
+
 Dir[File.join(APP_ROOT, 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }

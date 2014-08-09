@@ -8,19 +8,19 @@ module Backlogg
 
         # Get all templates
         get '/' do
-          json Template.all.map { |template| Backlogg::Serializers::TemplateSerializer.new(template) }
+          json Template.all.map { |template| TemplateSerializer.new(template) }
         end
 
         # Get a specific template
         get '/:id' do
           template = Template.find_by_id(params[:id])
-          json Backlogg::Serializers::TemplateSerializer.new(template)
+          json TemplateSerializer.new(template)
         end
 
         # Get all columns for a specific template
         get '/:id/columns' do
           template = Template.find_by_id(params[:id])
-          json template.columns.map { |column| Backlogg::Serializers::ColumnSerializer.new(column) }
+          json template.columns.map { |column| ColumnSerializer.new(column) }
         end
 
         # Create a new template

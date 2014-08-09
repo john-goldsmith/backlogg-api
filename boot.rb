@@ -5,6 +5,7 @@ require "active_record"
 require "active_model_serializers"
 require 'active_support'
 require "sinatra" # Should this be "sinatra/base"?
+require "sinatra/param"
 require "sinatra/activerecord"
 require "sinatra/config_file"
 require "sinatra/json"
