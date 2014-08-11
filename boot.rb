@@ -13,7 +13,7 @@ require "sinatra/json"
 require "sinatra/respond_with"
 require "sinatra-initializers"
 # require "sinatra/strong_params"
-# require "./config/environments"
+require "./config/environments"
 
 module Backlogg
   APP_ROOT = File.dirname(__FILE__)
@@ -27,7 +27,3 @@ Dir[Backlogg::APP_ROOT + '/lib/concerns/*.rb'].each { |concern| require concern 
 Dir[Backlogg::APP_ROOT + '/lib/models/*.rb'].each { |model| require model }
 Dir[Backlogg::APP_ROOT + '/lib/serializers/*.rb'].each { |serializer| require serializer }
 Dir[Backlogg::APP_ROOT + '/lib/controllers/*.rb'].each { |controller| require controller }
-
-# ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://postgres@localhost/backlogg_development')
-# ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
-# ActiveRecord::Base.establish_connection($DATABASE_URL)
