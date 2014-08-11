@@ -101,6 +101,7 @@ DEPENDENCIES
   activerecord
   activeresource
   activesupport
+  dotenv
   foreman
   pg
   protected_attributes

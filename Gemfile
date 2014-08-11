@@ -18,6 +18,7 @@ gem "sinatra-param"
 # gem "strong_parameters"
 # gem 'sinatra-strong-params'
 gem "foreman"
+gem "dotenv"
 # gem "datamapper"
 
 group :development do
