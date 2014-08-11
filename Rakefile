@@ -1,5 +1,3 @@
-require 'rake/dsl_definition'
-require 'rake'
 require './boot'
 require 'sinatra/activerecord/rake'
 
