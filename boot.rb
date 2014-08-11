@@ -7,12 +7,12 @@ require "active_support"
 require "protected_attributes"
 require "sinatra/base"
 require "sinatra/param"
-# require "sinatra/activerecord"
+require "sinatra/activerecord"
 require "sinatra/config_file"
 require "sinatra/json"
 require "sinatra/respond_with"
-# require "sinatra/strong_params"
 require "sinatra-initializers"
+# require "sinatra/strong_params"
 # require "./config/environments"
 
 module Backlogg
@@ -28,4 +28,6 @@ Dir[Backlogg::APP_ROOT + '/lib/models/*.rb'].each { |model| require model }
 Dir[Backlogg::APP_ROOT + '/lib/serializers/*.rb'].each { |serializer| require serializer }
 Dir[Backlogg::APP_ROOT + '/lib/controllers/*.rb'].each { |controller| require controller }
 
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://postgres@localhost/backlogg_development')
+# ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://postgres@localhost/backlogg_development')
+# ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
+# ActiveRecord::Base.establish_connection($DATABASE_URL)

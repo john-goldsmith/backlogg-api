@@ -1,17 +1,17 @@
-# development:
-#   host: localhost
-#   adapter: postgresql
-#   encoding: utf8
-#   database: backlogg_development
-#   pool: 5
-#   username: postgres
-#   password:
+development:
+  host: localhost
+  adapter: postgresql
+  encoding: utf8
+  database: backlogg_development
+  pool: 5
+  username: postgres
+  password:
 
-# test:
-#   host: localhost
-#   adapter: postgresql
-#   encoding: utf8
-#   database: backlogg_test
-#   pool: 5
-#   username: postgres
-#   password:
+test:
+  host: localhost
+  adapter: postgresql
+  encoding: utf8
+  database: backlogg_test
+  pool: 5
+  username: postgres
+  password:

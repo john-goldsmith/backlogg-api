@@ -1,4 +1,5 @@
 require './boot'
+# require 'sinatra/activerecord'
 require 'sinatra/activerecord/rake'
 
 task default: [:console]
