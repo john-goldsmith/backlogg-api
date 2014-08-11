@@ -14,4 +14,4 @@
 
 include Backlogg::Models
 
-Dir[File.join(APP_ROOT, 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }
+Dir[File.join(Backlogg::APP_ROOT, 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }

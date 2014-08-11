@@ -8,13 +8,17 @@ gem "activerecord"
 gem "activesupport"
 gem "activemodel"
 gem "activeresource"
+gem "protected_attributes"
 gem "active_model_serializers"
 gem "sinatra"
 gem "sinatra-contrib"
 gem "sinatra-activerecord"
 gem "sinatra-initializers"
 gem "sinatra-param"
+# gem "strong_parameters"
+# gem 'sinatra-strong-params'
 gem "foreman"
+# gem "datamapper"
 
 group :development do
   gem "pry"

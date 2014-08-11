@@ -7,6 +7,7 @@ module Backlogg
       extend ActiveSupport::Concern
 
       included do
+        validates :slug, uniqueness: true
         after_create :update_slug
         before_update :assign_slug # Shouldn't slugs be idempotent?
       end

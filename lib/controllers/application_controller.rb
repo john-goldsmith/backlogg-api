@@ -6,7 +6,8 @@ module Backlogg
 
       class ApplicationController < Sinatra::Base
 
-        # register Sinatra::ActiveRecordExtension # Is this needed?
+        register Sinatra::ActiveRecordExtension # Is this needed?
+        register Sinatra::Initializers
         helpers Sinatra::Param
         include Backlogg::Models
         include Backlogg::Serializers
@@ -15,8 +16,12 @@ module Backlogg
           content_type :json
         end
 
-        not_found do
-          halt 404, {errors: {}, message: "URL not found"}.to_json
+        # not_found do
+        #   halt 404, {errors: {}, message: "URL not found"}.to_json
+        # end
+
+        get '/ping' do
+          "pong!"
         end
 
       end
