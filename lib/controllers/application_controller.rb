@@ -6,7 +6,7 @@ module Backlogg
 
       class ApplicationController < Sinatra::Base
 
-        # register Sinatra::ActiveRecordExtension # Is this needed?
+        register Sinatra::ActiveRecordExtension # Is this needed?
         register Sinatra::Initializers
         helpers Sinatra::Param
         include Backlogg::Models
