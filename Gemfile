@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 ruby "2.1.1"
 
-gem "rake"
 gem "pg"
 gem "activerecord"
 gem "activesupport"
@@ -22,6 +21,7 @@ gem "dotenv"
 # gem "datamapper"
 
 group :development do
+  gem "rake"
   gem "pry"
   gem "rerun"
   gem "thin"
