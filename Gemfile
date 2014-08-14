@@ -14,7 +14,6 @@ gem "sinatra-contrib"
 gem "sinatra-activerecord"
 gem "sinatra-initializers"
 gem "sinatra-param"
-# gem "strong_parameters"
 # gem 'sinatra-strong-params'
 gem "foreman"
 gem "dotenv"
@@ -25,6 +24,7 @@ group :development do
   gem "pry"
   gem "rerun"
   gem "thin"
+  gem "apiaryio"
 end
 
 group :documentation do
