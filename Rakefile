@@ -10,3 +10,4 @@ task :console do
 end
 
 task c: :console
+task pry: :console
