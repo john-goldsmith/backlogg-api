@@ -1,10 +1,75 @@
 FORMAT: 1A
-HOST: http://api.backlogg.com
+HOST: http://api.backlogg.com/v1
 
-# Backlogg API
+# Backlogg API (v1)
 Documentation for the Backlogg API
 
-## GET /message
+# Group Users
+
+# Group Projects
+APIs related to the Project resource
+
+## Projects Collection [/projects]
+
+### Retrieve all projects [GET]
+
 + Response 200 (application/json)
 
-        Hello World!
+        [{"project":{"id":1,"name":"Test Project 1","slug":"1-test-project-1","user":{"id":1,"screen_name":"johndoe","first_name":"John","last_name":"Doe","email":"johndoe@example.com","created_at":"2014-08-08T23:10:06.473Z","updated_at":"2014-08-08T23:10:06.473Z"}}}]
+
+### Create new project [POST]
+
++ Parameters
+
+  + name (required, String, `My Project`) ... The name of the project
+  + code (required, String, `P1`) ... A two letter code used for quickly identifying tasks
+  + user_id (required, Integer, `1`) ... The user ID of the project creator
+  + is_active (optional, Boolean, `true`) ... A flag indicating if the project should be active or inactive
+
++ Request
+
+        {"name": "My Project", "code": "MP", "user_id": 1}
+
++ Response 200 (application/json)
+
+        {"project":{"id":1,"name":"My Project","slug":"1-my-project","user":{"id":1,"screen_name":"johndoe","first_name":"John","last_name":"Doe","email":"johndoe@example.com","created_at":"2014-08-08T23:10:06.473Z","updated_at":"2014-08-08T23:10:06.473Z"}}}
+
+## Project [/projects/:id]
+
++ Parameters
+
+  + id (required, Integer, `1`) ... Numeric `id` of the project to retrieve
+
+### Retrieve a project [GET]
+
++ Response 200 (application/json)
+
+        {"project":{"id":1,"name":"Test Project 1","slug":"1-test-project-1","user":{"id":1,"screen_name":"johndoe","first_name":"John","last_name":"Doe","email":"johndoe@example.com","created_at":"2014-08-08T23:10:06.473Z","updated_at":"2014-08-08T23:10:06.473Z"}}}
+
+### Update a project [PUT]
+
++ Response 200 (application/json)
+
+        {"project":{"id":1,"name":"Test Project 1","slug":"1-test-project-1","user":{"id":1,"screen_name":"johndoe","first_name":"John","last_name":"Doe","email":"johndoe@example.com","created_at":"2014-08-08T23:10:06.473Z","updated_at":"2014-08-08T23:10:06.473Z"}}}
+
+## Sprint [/projects/:id/sprints]
+
++ Parameters
+
+  + id (required, Integer, `1`) ... Numeric `id` of the project to retrieve
+
+### Retrieve sprints for a project [GET]
+
++ Response 200 (application/json)
+
+        {[]}
+
+# Group Sprints
+
+# Group Columns
+
+# Group Tasks
+
+# Group Comments
+
+# Group Templates

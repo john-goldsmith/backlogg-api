@@ -37,7 +37,7 @@ class InitialMigration < ActiveRecord::Migration
       t.string :slug
       t.string :code, limit: 2
       t.references :user
-      t.boolean :is_active
+      t.boolean :is_active, default: true
       t.timestamps
     end
 

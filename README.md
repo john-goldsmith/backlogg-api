@@ -2,11 +2,18 @@
 
 ## Database
 ```
-createuser -s -r postgres
-createdb backlogg_development
+bundle exec rake db:create
+bundle exec rake db:migrate
+bundle exec rake db:seed
 ```
 
+## Console
+`bundle exec rake console`
+
+## Documentation
+`apiary preview --server` or `aglio -i apiary.apib -s -p 8080`
+
 ## Inspiration
-http://www.opensourcerails.com/sprintapp
-http://www.opensourcerails.com/fulcrum
-http://www.trello.com
+  - [Trello](http://www.trello.com)
+  - [SprintApp](http://www.opensourcerails.com/sprintapp)
+  - [Fulcrum](http://www.opensourcerails.com/fulcrum)
