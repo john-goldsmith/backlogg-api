@@ -8,7 +8,7 @@ module Backlogg
                  :body
 
       has_one :user#, serializer: "Backlogg::Serializers::UserSerializer"
-      has_one :task#, serializer: "Backlogg::Serializers::TaskSerializer"
+      # has_one :task#, serializer: "Backlogg::Serializers::TaskSerializer"
 
     end
 

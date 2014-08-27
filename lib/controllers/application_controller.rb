@@ -14,6 +14,7 @@ module Backlogg
 
         before do
           content_type :json
+          response.headers["Access-Control-Allow-Origin"] = "*"
         end
 
         # not_found do

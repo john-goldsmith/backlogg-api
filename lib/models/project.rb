@@ -8,6 +8,9 @@ module Backlogg
 
       belongs_to :user
       has_many :sprints
+      has_many :columns, through: :sprints
+      has_many :tasks, through: :columns
+      has_many :comments, through: :tasks
 
       validates :name, presence: true
       validates :user, presence: true
