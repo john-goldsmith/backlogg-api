@@ -12,8 +12,3 @@ bundle exec rake db:seed
 
 ## Documentation
 `apiary preview --server` or `aglio -i apiary.apib -s -p 8080`
-
-## Inspiration
-  - [Trello](http://www.trello.com)
-  - [SprintApp](http://www.opensourcerails.com/sprintapp)
-  - [Fulcrum](http://www.opensourcerails.com/fulcrum)
