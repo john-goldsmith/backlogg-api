@@ -13,7 +13,9 @@ module Backlogg
         include Backlogg::Serializers
 
         before do
-          content_type :json
+          response.headers["Access-Control-Allow-Headers"] = "Origin, X-Requested-With, Content-Type, Accept"
+          response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE"
+          response.headers["Content-Type"] = "application/x-www-form-urlencoded, application/json"
           response.headers["Access-Control-Allow-Origin"] = "*"
         end
 

@@ -8,7 +8,13 @@ module Backlogg
 
         # Get all projects
         get '/' do
-          json Project.all.map { |project| ProjectSerializer.new(project) }
+          param :include_inactive, Boolean
+
+          if params[:include_inactive]
+            json Project.all.map { |project| ProjectSerializer.new(project) }
+          else
+            json Project.where(is_active: true).map { |project| ProjectSerializer.new(project) }
+          end
         end
 
         # Get a specific project
@@ -57,10 +63,12 @@ module Backlogg
 
         # Create a new project
         post '/' do
-          param :name, String, required: true
-          param :user_id, Integer, required: true
-          param :code, String, required: true, min_length: 2, max_length: 2
-          param :is_active, Boolean
+          params = ActiveSupport::HashWithIndifferentAccess.new(JSON.parse(request.body.read))
+
+          # param :name, String, required: true
+          # param :user_id, Integer, required: true
+          # param :code, String, required: true, min_length: 2, max_length: 2
+          # param :is_active, Boolean
 
           user = User.find_by_id(params[:user_id])
           halt 404, {errors: true, message: "User not found"}.to_json unless user
