@@ -27,6 +27,10 @@ module Backlogg
           "pong!"
         end
 
+        options '*' do
+          status 200
+        end
+
       end
 
     end

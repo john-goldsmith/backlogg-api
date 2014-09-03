@@ -84,10 +84,12 @@ module Backlogg
 
         # Update a specific project
         put '/:id' do
-          param :id, Integer, required: true
-          param :user_id, Integer
-          param :code, String, min_length: 2, max_length: 2
-          param :is_active, Boolean
+          params = ActiveSupport::HashWithIndifferentAccess.new(JSON.parse(request.body.read))
+
+          # param :id, Integer, required: true
+          # param :user_id, Integer
+          # param :code, String, min_length: 2, max_length: 2
+          # param :is_active, Boolean
 
           project = Project.find_by_id(params[:id])
           halt 404, {errors: true, message: "Project not found"}.to_json unless project
