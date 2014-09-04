@@ -8,7 +8,9 @@ module Backlogg
                  :name,
                  :slug,
                  :code,
-                 :is_active
+                 :is_active,
+                 :created_at,
+                 :updated_at
 
       has_one :user#, serializer: "Backlogg::Serializers::UserSerializer"
 
