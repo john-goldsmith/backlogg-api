@@ -99,6 +99,9 @@ module Backlogg
             halt 404, {errors: true, message: "User not found"}.to_json unless user
           end
 
+          # TODO: Quick fix for mass assignment of ID warning
+          params.delete :id
+
           if project.update(params)
             status 200
             json ProjectSerializer.new(project)

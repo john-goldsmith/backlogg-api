@@ -17,7 +17,8 @@ module Backlogg
       validates :code, presence: true, uniqueness: true
       validates_associated :user
 
-      attr_accessible :name, :slug, :user, :code, :is_active
+      # TODO: user or user_id ?
+      attr_accessible :name, :slug, :user, :code, :is_active, :user_id
 
       before_validation :upcase_code
 
