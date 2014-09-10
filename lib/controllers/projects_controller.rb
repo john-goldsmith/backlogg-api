@@ -110,6 +110,36 @@ module Backlogg
           end
         end
 
+        # Archive a specific project
+        put '/:id/archive' do
+          param :id, Integer, required: true
+
+          project = Project.find_by_id(params[:id])
+          halt 404, {errors: true, message: "Project not found"}.to_json unless project
+
+          if project.update(is_active: false)
+            status 200
+            json ProjectSerializer.new(project)
+          else
+            halt 400, {errors: project.errors.messages, message: "Error updating project"}.to_json
+          end
+        end
+
+        # Unarchive a specific project
+        put '/:id/unarchive' do
+          param :id, Integer, required: true
+
+          project = Project.find_by_id(params[:id])
+          halt 404, {errors: true, message: "Project not found"}.to_json unless project
+
+          if project.update(is_active: true)
+            status 200
+            json ProjectSerializer.new(project)
+          else
+            halt 400, {errors: project.errors.messages, message: "Error updating project"}.to_json
+          end
+        end
+
         # Delete a specific project
         delete '/:id' do
           param :id, Integer, required: true
