@@ -63,12 +63,10 @@ module Backlogg
 
         # Create a new project
         post '/' do
-          params = ActiveSupport::HashWithIndifferentAccess.new(JSON.parse(request.body.read))
-
-          # param :name, String, required: true
-          # param :user_id, Integer, required: true
-          # param :code, String, required: true, min_length: 2, max_length: 2
-          # param :is_active, Boolean
+          param :name, String, required: true
+          param :user_id, Integer, required: true
+          param :code, String, required: true, min_length: 2, max_length: 2
+          param :is_active, Boolean
 
           user = User.find_by_id(params[:user_id])
           halt 404, {errors: true, message: "User not found"}.to_json unless user
@@ -84,12 +82,10 @@ module Backlogg
 
         # Update a specific project
         put '/:id' do
-          params = ActiveSupport::HashWithIndifferentAccess.new(JSON.parse(request.body.read))
-
-          # param :id, Integer, required: true
-          # param :user_id, Integer
-          # param :code, String, min_length: 2, max_length: 2
-          # param :is_active, Boolean
+          param :id, Integer, required: true
+          param :user_id, Integer
+          param :code, String, min_length: 2, max_length: 2
+          param :is_active, Boolean
 
           project = Project.find_by_id(params[:id])
           halt 404, {errors: true, message: "Project not found"}.to_json unless project
