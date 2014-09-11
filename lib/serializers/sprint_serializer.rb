@@ -4,6 +4,8 @@ module Backlogg
 
     class SprintSerializer < ApplicationSerializer
 
+      root false
+
       attributes :id,
                  :name,
                  :slug
