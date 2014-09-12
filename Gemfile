@@ -19,7 +19,8 @@ gem "foreman"
 gem "dotenv"
 # gem "datamapper"
 
-# See https://github.com/rack/rack-contrib/pull/22 (merged, but not released to RubyGems)
+# See https://github.com/rack/rack-contrib/pull/22 (merged, but not
+# released to RubyGems)
 # See http://jaywiggins.com/2010/04/lost-sleep-over-json-and-rackpostbodycontenttypeparser/
 gem "rack-contrib", git: "https://github.com/rack/rack-contrib.git", branch: "master"
 
