@@ -1,3 +1,5 @@
+require "rack"
+require "rack/contrib"
 require "rubygems"
 require "bundler"
 require "json"

@@ -1,5 +1,7 @@
 require './boot'
 
+use Rack::PostBodyContentTypeParser
+
 run Rack::URLMap.new({
   "/api/v1/users"       => Backlogg::Api::V1::UsersController,
   "/api/v1/projects"    => Backlogg::Api::V1::ProjectsController,

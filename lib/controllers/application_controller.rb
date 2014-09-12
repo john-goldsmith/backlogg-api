@@ -19,12 +19,19 @@ module Backlogg
           # response.headers["Content-Type"] = "application/x-www-form-urlencoded, application/json"
           response.headers["Access-Control-Allow-Origin"] = "*"
 
+          # The following has been deprecated in favor of the 'rack-contrib'
+          # gem.  More specifically, the PostBodyContentTypeParser class it
+          # provides.
+          #
+          # See http://samurails.com/tutorial/cors-with-angular-js-and-sinatra/
+          # See http://stackoverflow.com/questions/12131763/sinatra-controller-params-method-coming-in-empty-on-json-post-request
+          #
           # if request.method == :post
-            begin
-              params.merge! JSON.parse(request.env["rack.input"].read)
-            rescue JSON::ParserError
-              logger.error "Cannot parse request body."
-            end
+          #   begin
+          #     params.merge! JSON.parse(request.env["rack.input"].read)
+          #   rescue JSON::ParserError
+          #     logger.error "Cannot parse request body."
+          #   end
           # end
 
         end
