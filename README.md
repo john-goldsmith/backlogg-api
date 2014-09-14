@@ -9,6 +9,9 @@ bundle exec rake db:migrate
 bundle exec rake db:seed
 ```
 
+### Run it!
+`bundle exec rerun rackup config.ru`
+
 ### Console
 `bundle exec rake console`
 
