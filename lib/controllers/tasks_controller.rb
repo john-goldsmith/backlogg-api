@@ -7,9 +7,9 @@ module Backlogg
       class TasksController < ApplicationController
 
         # Get all tasks
-        get '/' do
-          json Task.all.map { |task| TaskSerializer.new(task) }
-        end
+        # get '/' do
+        #   json Task.all.map { |task| TaskSerializer.new(task) }
+        # end
 
         # Get a specific task
         get '/:id' do

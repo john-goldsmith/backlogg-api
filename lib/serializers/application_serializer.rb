@@ -4,7 +4,9 @@ module Backlogg
 
     class ApplicationSerializer < ActiveModel::Serializer
 
-      self.root = true
+      self.root = false
+
+      # serialization_scope :view_context
 
     end
 

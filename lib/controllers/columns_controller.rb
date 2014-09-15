@@ -7,9 +7,9 @@ module Backlogg
       class ColumnsController < ApplicationController
 
         # Get all columns
-        get '/' do
-          json Column.all.map { |column| ColumnSerializer.new(column) }
-        end
+        # get '/' do
+        #   json Column.all.map { |column| ColumnSerializer.new(column) }
+        # end
 
         # Get a specific column
         get '/:id' do

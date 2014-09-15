@@ -7,9 +7,9 @@ module Backlogg
       class SprintsController < ApplicationController
 
         # Get all sprints
-        get '/' do
-          json Sprint.all.map { |sprint| SprintSerializer.new(sprint) }
-        end
+        # get '/' do
+        #   json Sprint.all.map { |sprint| SprintSerializer.new(sprint) }
+        # end
 
         # Get a specific sprint
         get '/:id' do
@@ -19,8 +19,19 @@ module Backlogg
 
         # Get all columns for a specific sprint
         get '/:id/columns' do
+          param :id, Integer, required: true
+          param :include_tasks, Boolean
+
           sprint = Sprint.find_by_id(params[:id])
-          json sprint.columns.map { |column| ColumnSerializer.new(column) }
+          halt 404, {errors: true, message: "Sprint not found"}.to_json unless sprint
+
+          if params[:include_tasks]
+            json sprint.columns.map { |column| ColumnSerializer.new(column) }
+          else
+            json sprint.columns.map { |column| ColumnSerializer.new(column) }
+          end
+
+          # status 200
         end
 
         # Get all tasks for a specific sprint

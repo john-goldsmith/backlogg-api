@@ -4,8 +4,6 @@ module Backlogg
 
     class ProjectSerializer < ApplicationSerializer
 
-      root false
-
       attributes :id,
                  :name,
                  :slug,

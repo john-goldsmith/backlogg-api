@@ -39,27 +39,27 @@ module Backlogg
           json project.sprints.map { |sprint| SprintSerializer.new(sprint) }
         end
 
-        # Get all columns for a specific project
-        get '/:id/columns' do
-          param :id, Integer, required: true
+        # # Get all columns for a specific project
+        # get '/:id/columns' do
+        #   param :id, Integer, required: true
 
-          project = Project.find_by_id(params[:id])
-          halt 404, {errors: true, message: "Project not found"}.to_json unless project
+        #   project = Project.find_by_id(params[:id])
+        #   halt 404, {errors: true, message: "Project not found"}.to_json unless project
 
-          status 200
-          json project.columns.map { |column| ColumnSerializer.new(column) }
-        end
+        #   status 200
+        #   json project.columns.map { |column| ColumnSerializer.new(column) }
+        # end
 
-        # Get all tasks for a specific project
-        get '/:id/tasks' do
-          param :id, Integer, required: true
+        # # Get all tasks for a specific project
+        # get '/:id/tasks' do
+        #   param :id, Integer, required: true
 
-          project = Project.find_by_id(params[:id])
-          halt 404, {errors: true, message: "Project not found"}.to_json unless project
+        #   project = Project.find_by_id(params[:id])
+        #   halt 404, {errors: true, message: "Project not found"}.to_json unless project
 
-          status 200
-          json project.tasks.map { |task| TaskSerializer.new(task) }
-        end
+        #   status 200
+        #   json project.tasks.map { |task| TaskSerializer.new(task) }
+        # end
 
         # Create a new project
         post '/' do

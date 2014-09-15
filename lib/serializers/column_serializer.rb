@@ -4,6 +4,8 @@ module Backlogg
 
     class ColumnSerializer < ApplicationSerializer
 
+      # delegate :params, to: :scope
+
       attributes :id,
                  :name,
                  :slug

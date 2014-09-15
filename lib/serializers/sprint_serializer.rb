@@ -4,11 +4,12 @@ module Backlogg
 
     class SprintSerializer < ApplicationSerializer
 
-      root false
-
       attributes :id,
                  :name,
-                 :slug
+                 :slug,
+                 :is_active,
+                 :created_at,
+                 :updated_at
 
       # has_one :project#, serializer: "Backlogg::Serializers::ProjectSerializer"
       # has_many :columns#, serializer: "Backlogg::Serializers::ColumnSerializer"

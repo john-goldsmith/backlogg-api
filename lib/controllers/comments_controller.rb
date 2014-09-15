@@ -7,9 +7,9 @@ module Backlogg
       class CommentsController < ApplicationController
 
         # Get all comments
-        get '/' do
-          json Comment.all.map { |comment| CommentSerializer.new(comment) }
-        end
+        # get '/' do
+        #   json Comment.all.map { |comment| CommentSerializer.new(comment) }
+        # end
 
         # Get a specific comment
         get '/:id' do
