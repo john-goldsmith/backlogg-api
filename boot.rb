@@ -30,5 +30,7 @@ end
 # Dir[Backlogg::APP_ROOT + "/config/initializers/*.rb"].each { |initializer| require initializer }
 Dir[Backlogg::APP_ROOT + "/lib/concerns/*.rb"].each { |concern| require concern }
 Dir[Backlogg::APP_ROOT + "/lib/models/*.rb"].each { |model| require model }
-Dir[Backlogg::APP_ROOT + "/lib/serializers/*.rb"].sort.each { |serializer| require serializer }
+require './lib/serializers/application_serializer'
+Dir[Backlogg::APP_ROOT + "/lib/serializers/*.rb"].each { |serializer| require serializer }
+require './lib/controllers/application_controller'
 Dir[Backlogg::APP_ROOT + "/lib/controllers/*.rb"].each { |controller| require controller }
