@@ -1,3 +1,6 @@
+require "dotenv"
+Dotenv.load
+
 require "rack"
 require "rack/contrib"
 require "rubygems"
