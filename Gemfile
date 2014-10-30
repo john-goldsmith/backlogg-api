@@ -18,6 +18,7 @@ gem "sinatra-param"
 gem "foreman"
 gem "dotenv"
 # gem "datamapper"
+gem "rake"
 
 # See https://github.com/rack/rack-contrib/pull/22 (merged, but not
 # released to RubyGems)
@@ -25,7 +26,6 @@ gem "dotenv"
 gem "rack-contrib", git: "https://github.com/rack/rack-contrib.git", branch: "master"
 
 group :development do
-  gem "rake"
   gem "pry"
   gem "rerun"
   gem "thin"
