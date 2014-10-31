@@ -10,11 +10,12 @@ module Backlogg
         get '/' do
           param :include_inactive, Boolean
 
-          if params[:include_inactive]
-            json Project.all.map { |project| ProjectSerializer.new(project) }
-          else
-            json Project.where(is_active: true).map { |project| ProjectSerializer.new(project) }
+          projects = Project.joins(:user).includes(:user)
+
+          unless params[:include_inactive]
+            projects = projects.where(:is_active => true)
           end
+          json projects.map { |project| ProjectSerializer.new(project) }
         end
 
         # Get a specific project
