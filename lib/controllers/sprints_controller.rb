@@ -48,7 +48,22 @@ module Backlogg
 
         # Create a new sprint
         post '/' do
+          param :name, String, required: true
+          param :project_id, Integer, required: true
+          param :starts_at, String, required: true
+          param :ends_at, String, required: true
+          param :is_active, Boolean
 
+          project = Project.find_by_id(params[:project_id])
+          halt 404, {errors: true, message: "Project not found"}.to_json unless project
+          params["project"] = project
+          params.delete "project_id"
+
+          sprint = Sprint.create(params)
+          halt 400, {errors: sprint.errors.messages, message: "Error creating sprint"}.to_json unless sprint.valid?
+
+          status 200
+          json SprintSerializer.new(sprint)
         end
 
         # Update a specific sprint
