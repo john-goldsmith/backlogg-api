@@ -138,6 +138,8 @@ module Backlogg
         end
 
         # Delete a specific project
+        # TODO: What are the implications of this? Should dependent
+        # resources also be deleted, or put in a special limbo state?
         delete '/:id' do
           param :id, Integer, required: true
 
