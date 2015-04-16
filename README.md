@@ -1,18 +1,25 @@
-# Backlogg API
+# Backlogg API - Sinatra
+Backlogg's RESTful API written in Ruby using [Sinatra](http://www.sinatrarb.com/).
 
 ## Setup
 
-### Database
-```
-bundle exec rake db:create
-bundle exec rake db:migrate
-bundle exec rake db:seed
-```
+### Prerequisites
+- Ruby 2.1.1 via [rbenv](https://github.com/sstephenson/rbenv)
+- [Ruby Gems](https://rubygems.org/pages/download)
+- Run `bundle install` (or `bundle update`) via [Bundler](http://bundler.io)
 
-### Run it!
+### Database
+- Download, install, and run [PostgreSQL](http://postgresapp.com)
+- Run `createdb backlogg_development` to create the database
+-
+- Run `bundle exec rake db:create`
+- Run `bundle exec rake db:migrate`
+- Run `bundle exec rake db:seed`
+
+### Run it
 `bundle exec rerun rackup config.ru`
 
-### Console
+### Interactive Console
 `bundle exec rake console`
 
 ### Documentation
