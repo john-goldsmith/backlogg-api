@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.1.1"
+ruby "2.2.2"
 
 gem "pg"
 gem "activerecord"
@@ -19,7 +19,8 @@ gem "foreman"
 gem "dotenv"
 # gem "datamapper"
 gem "rake"
-gem "json", '~> 1.7.7'
+# gem "json", '~> 1.7.7'
+gem "json"
 
 # See https://github.com/rack/rack-contrib/pull/22 (merged, but not
 # released to RubyGems)

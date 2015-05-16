@@ -7,6 +7,7 @@ Backlogg's RESTful API written in Ruby using [Sinatra](http://www.sinatrarb.com/
 - Ruby 2.1.1 via [rbenv](https://github.com/sstephenson/rbenv)
 - [Ruby Gems](https://rubygems.org/pages/download)
 - Run `bundle install` (or `bundle update`) via [Bundler](http://bundler.io)
+  - If `gem install pg` fails, try running `brew install postgresql` first
 
 ### Database
 - Download, install, and run [PostgreSQL](http://postgresapp.com)
