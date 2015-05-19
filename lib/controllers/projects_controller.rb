@@ -15,7 +15,9 @@ module Backlogg
           unless params[:include_inactive]
             projects = projects.where(:is_active => true)
           end
-          json projects.map { |project| ProjectSerializer.new(project) }
+          # json projects.map { |project| ProjectSerializer.new(project) }
+          projects = projects.map { |project| ProjectSerializer.new(project) }
+          {projects: projects}.to_json
         end
 
         # Get a specific project
