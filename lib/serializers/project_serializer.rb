@@ -13,6 +13,7 @@ module Backlogg
                  :updated_at
 
       has_one :user#, serializer: "Backlogg::Serializers::UserSerializer"
+      has_many :sprints
 
     end
 

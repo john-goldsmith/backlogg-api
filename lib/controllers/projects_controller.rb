@@ -13,11 +13,11 @@ module Backlogg
           projects = Project.joins(:user).includes(:user)
 
           unless params[:include_inactive]
-            projects = projects.where(:is_active => true)
+            projects = projects.where(is_active: true)
           end
           # json projects.map { |project| ProjectSerializer.new(project) }
-          projects = projects.map { |project| ProjectSerializer.new(project) }
-          {projects: projects}.to_json
+          serialized_projects = projects.map { |project| ProjectSerializer.new(project) }
+          {projects: serialized_projects}.to_json
         end
 
         # Get a specific project
@@ -28,7 +28,9 @@ module Backlogg
           halt 404, {errors: true, message: "Project not found"}.to_json unless project
 
           status 200
-          json ProjectSerializer.new(project)
+          # json ProjectSerializer.new(project)
+          serialized_project = ProjectSerializer.new(project)
+          {project: serialized_project}.to_json
         end
 
         # Get all sprints for a specific project
@@ -39,7 +41,9 @@ module Backlogg
           halt 404, {errors: true, message: "Project not found"}.to_json unless project
 
           status 200
-          json project.sprints.map { |sprint| SprintSerializer.new(sprint) }
+          # json project.sprints.map { |sprint| SprintSerializer.new(sprint) }
+          serialized_sprints = project.sprints.map { |sprint| SprintSerializer.new(sprint) }
+          {sprints: serialized_sprints}.to_json
         end
 
         # # Get all columns for a specific project
