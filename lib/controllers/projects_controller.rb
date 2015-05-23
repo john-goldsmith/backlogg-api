@@ -10,14 +10,15 @@ module Backlogg
         get '/' do
           param :include_inactive, Boolean
 
-          projects = Project.joins(:user).includes(:user)
+          # projects = Project.joins(:user).includes(:user)
+          projects = Project.all
 
           unless params[:include_inactive]
             projects = projects.where(is_active: true)
           end
-          # json projects.map { |project| ProjectSerializer.new(project) }
-          serialized_projects = projects.map { |project| ProjectSerializer.new(project) }
-          {projects: serialized_projects}.to_json
+
+          status 200
+          json ActiveModel::ArraySerializer.new(projects, each_serializer: ProjectSerializer, root: :projects)
         end
 
         # Get a specific project
@@ -28,9 +29,7 @@ module Backlogg
           halt 404, {errors: true, message: "Project not found"}.to_json unless project
 
           status 200
-          # json ProjectSerializer.new(project)
-          serialized_project = ProjectSerializer.new(project)
-          {project: serialized_project}.to_json
+          json ProjectSerializer.new(project, root: :project)
         end
 
         # Get all sprints for a specific project

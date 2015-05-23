@@ -4,6 +4,8 @@ module Backlogg
 
     class SprintSerializer < ApplicationSerializer
 
+      # embed :ids, embed_in_root: true, include: true
+
       attributes :id,
                  :name,
                  :slug,

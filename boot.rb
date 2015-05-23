@@ -20,11 +20,6 @@ require "sinatra-initializers"
 # require "sinatra/strong_params"
 require "./config/environments"
 
-ActiveModel::Serializer.setup do |config|
-  config.embed = :ids
-  config.embed_in_root = true
-end
-
 module Backlogg
   APP_ROOT = File.dirname(__FILE__)
   CONFIG = YAML.load_file(File.join(APP_ROOT, "config", "config.yml"))
