@@ -14,7 +14,9 @@ module Backlogg
         # Get a specific sprint
         get '/:id' do
           sprint = Sprint.find_by_id(params[:id])
-          json SprintSerializer.new(sprint)
+
+          status 200
+          json SprintSerializer.new(sprint, root: :sprints)
         end
 
         # Get all columns for a specific sprint

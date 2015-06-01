@@ -14,8 +14,8 @@ module Backlogg
                  :created_at,
                  :updated_at
 
-      has_one :user, serializer: "Backlogg::Serializers::UserSerializer"
-      has_many :sprints, serializer: "Backlogg::Serializers::SprintSerializer"
+      # has_one :user, serializer: "Backlogg::Serializers::UserSerializer"
+      # has_many :sprints, serializer: "Backlogg::Serializers::SprintSerializer"
 
     end
 

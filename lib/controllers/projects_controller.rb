@@ -40,9 +40,7 @@ module Backlogg
           halt 404, {errors: true, message: "Project not found"}.to_json unless project
 
           status 200
-          # json project.sprints.map { |sprint| SprintSerializer.new(sprint) }
-          serialized_sprints = project.sprints.map { |sprint| SprintSerializer.new(sprint) }
-          {sprints: serialized_sprints}.to_json
+          json ActiveModel::ArraySerializer.new(project.sprints, root: :sprints)
         end
 
         # # Get all columns for a specific project
