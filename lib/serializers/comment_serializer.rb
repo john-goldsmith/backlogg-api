@@ -4,11 +4,12 @@ module Backlogg
 
     class CommentSerializer < ApplicationSerializer
 
+      embed :ids, include: true
+      has_one :user, serializer: "Backlogg::Serializers::UserSerializer"
+      # has_one :task#, serializer: "Backlogg::Serializers::TaskSerializer"
+
       attributes :id,
                  :body
-
-      has_one :user#, serializer: "Backlogg::Serializers::UserSerializer"
-      # has_one :task#, serializer: "Backlogg::Serializers::TaskSerializer"
 
     end
 

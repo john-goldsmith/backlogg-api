@@ -14,7 +14,8 @@ module Backlogg
         # Get a specific comment
         get '/:id' do
           comment = Comment.find_by_id(params[:id])
-          json CommentSerializer.new(comment)
+          status 200
+          json CommentSerializer.new(comment, root: :comment)
         end
 
         # Create a new comment

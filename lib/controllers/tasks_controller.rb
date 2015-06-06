@@ -14,13 +14,14 @@ module Backlogg
         # Get a specific task
         get '/:id' do
           task = Task.find_by_id(params[:id])
-          json TaskSerializer.new(task)
+          json TaskSerializer.new(task, root: :task)
         end
 
         # Get all comments for a specific task
         get '/:id/comments' do
           task = Task.find_by_id(params[:id])
-          json task.comments.map { |comment| CommentSerializer.new(comment) }
+          status 200
+          json ActiveModel::ArraySerializer.new(task.comments, each_serializer: CommentSerializer, root: :comments)
         end
 
         # Get all comments for a specific task

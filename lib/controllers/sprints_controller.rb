@@ -16,37 +16,37 @@ module Backlogg
           sprint = Sprint.find_by_id(params[:id])
 
           status 200
-          json SprintSerializer.new(sprint, root: :sprints)
+          json SprintSerializer.new(sprint, root: :sprint)
         end
 
         # Get all columns for a specific sprint
-        get '/:id/columns' do
-          param :id, Integer, required: true
-          param :include_tasks, Boolean
+        # get '/:id/columns' do
+        #   param :id, Integer, required: true
+        #   param :include_tasks, Boolean
 
-          sprint = Sprint.find_by_id(params[:id])
-          halt 404, {errors: true, message: "Sprint not found"}.to_json unless sprint
+        #   sprint = Sprint.find_by_id(params[:id])
+        #   halt 404, {errors: true, message: "Sprint not found"}.to_json unless sprint
 
-          if params[:include_tasks]
-            json sprint.columns.map { |column| ColumnSerializer.new(column) }
-          else
-            json sprint.columns.map { |column| ColumnSerializer.new(column) }
-          end
+        #   if params[:include_tasks]
+        #     json sprint.columns.map { |column| ColumnSerializer.new(column) }
+        #   else
+        #     json sprint.columns.map { |column| ColumnSerializer.new(column) }
+        #   end
 
-          # status 200
-        end
+        #   # status 200
+        # end
 
         # Get all tasks for a specific sprint
-        get '/:id/tasks' do
-          sprint = Sprint.find_by_id(params[:id])
-          json sprint.tasks.map { |task| TaskSerializer.new(task) }
-        end
+        # get '/:id/tasks' do
+        #   sprint = Sprint.find_by_id(params[:id])
+        #   json sprint.tasks.map { |task| TaskSerializer.new(task) }
+        # end
 
         # Get all comments for a specific sprint
-        get '/:id/comments' do
-          sprint = Sprint.find_by_id(params[:id])
-          json sprint.comments.map { |comment| CommentSerializer.new(comment) }
-        end
+        # get '/:id/comments' do
+        #   sprint = Sprint.find_by_id(params[:id])
+        #   json sprint.comments.map { |comment| CommentSerializer.new(comment) }
+        # end
 
         # Create a new sprint
         post '/' do
