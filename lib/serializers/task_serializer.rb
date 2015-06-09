@@ -4,10 +4,9 @@ module Backlogg
 
     class TaskSerializer < ApplicationSerializer
 
-      embed :ids, include: true
       # has_one :user#, serializer: "Backlogg::Serializers::UserSerializer"
       # has_one :column#, serializer: "Backlogg::Serializers::ColumnSerializer"
-      has_many :comments, serializer: "Backlogg::Serializers::CommentSerializer"
+      has_many :comments, serializer: "Backlogg::Serializers::CommentSerializer", embed: :ids
 
       attributes :id,
                  :name,
@@ -21,7 +20,7 @@ module Backlogg
       # TODO: Remove "/api/v1" in favor of dynamic vars
       def links
         {
-          comments: "/api/v1/task/#{id}/comments",
+          comments: "/api/v1/tasks/#{id}/comments",
         }
       end
 
