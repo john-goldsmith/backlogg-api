@@ -18,7 +18,14 @@ module Backlogg
       validates_associated :user
 
       # TODO: user or user_id ?
-      attr_accessible :name, :slug, :user, :code, :is_active, :user_id
+      attr_accessible :name,
+                      :slug,
+                      :user,
+                      :code,
+                      :is_active,
+                      :user_id,
+                      :created_at,
+                      :updated_at
 
       before_validation :upcase_code
 
