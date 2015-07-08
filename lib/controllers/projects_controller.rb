@@ -76,36 +76,37 @@ module Backlogg
           user = User.find_by_id(params[:project][:user_id])
           halt 404, {errors: true, message: "User not found"}.to_json unless user
           params[:project]["user"] = user
-          params[:project].delete "user_id"
+          params[:project].delete :user_id
 
           project = Project.create(params[:project])
           halt 400, {errors: project.errors.messages, message: "Error creating project"}.to_json unless project.valid?
 
           status 200
-          json ProjectSerializer.new(project)
+          json ProjectSerializer.new(project, root: :project)
         end
 
         # Update a specific project
         put '/:id' do
-          param :id, Integer, required: true
-          param :user_id, Integer
-          param :code, String, min_length: 2, max_length: 2
-          param :is_active, Boolean
+          param :project, Hash, required: true
+          # param :id, Integer, required: true
+          # param :user_id, Integer
+          # param :code, String, min_length: 2, max_length: 2
+          # param :is_active, Boolean
 
           project = Project.find_by_id(params[:id])
           halt 404, {errors: true, message: "Project not found"}.to_json unless project
 
-          if params[:user_id]
-            user = User.find_by_id(params[:user_id])
+          if params[:project][:user_id]
+            user = User.find_by_id(params[:project][:user_id])
             halt 404, {errors: true, message: "User not found"}.to_json unless user
           end
 
           # TODO: Quick fix for mass assignment of ID warning
-          params.delete :id
+          # params.delete :id
 
-          if project.update(params)
+          if project.update(params[:project])
             status 200
-            json ProjectSerializer.new(project)
+            json ProjectSerializer.new(project, root: :project)
           else
             halt 400, {errors: project.errors.messages, message: "Error updating project"}.to_json
           end
@@ -120,7 +121,7 @@ module Backlogg
 
           if project.update(is_active: false)
             status 200
-            json ProjectSerializer.new(project)
+            json ProjectSerializer.new(project, root: :project)
           else
             halt 400, {errors: project.errors.messages, message: "Error updating project"}.to_json
           end
@@ -135,7 +136,7 @@ module Backlogg
 
           if project.update(is_active: true)
             status 200
-            json ProjectSerializer.new(project)
+            json ProjectSerializer.new(project, root: :project)
           else
             halt 400, {errors: project.errors.messages, message: "Error updating project"}.to_json
           end
@@ -150,8 +151,10 @@ module Backlogg
           project = Project.find_by_id(params[:id])
           halt 404, {errors: true, message: "Project not found"}.to_json unless project
 
-          status 200
           project.destroy
+
+          status 204
+          # json {success: true}
         end
 
       end
